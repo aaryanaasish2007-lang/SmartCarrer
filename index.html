@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+{% block title %}CareerCompass | AI Career Recommendation{% endblock %}
+
+{% block content %}
+<div class="animated-bg">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+</div>
+
+<section class="hero-section" style="position: relative; text-align: center; padding: 7rem 1rem 5rem; max-width: 900px; margin: 0 auto; z-index: 10;">
+    <div class="stagger-1" style="display: inline-block; padding: 0.6rem 1.2rem; background: rgba(17,24,24,0.7); backdrop-filter: blur(10px); color: var(--fg); border-radius: 30px; font-size: 0.85rem; font-family: 'DM Mono', monospace; margin-bottom: 2.5rem; border: 1px solid rgba(46,184,177,0.3); box-shadow: 0 0 20px rgba(46,184,177,0.15);">
+        <span style="color: var(--teal); animation: pulse 2s infinite;">✦</span> Introducing Smart Career Recommendations
+    </div>
+    
+    <h1 class="stagger-2" style="font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.03em;">
+        Find the career path that <br>
+        <span class="gradient-text">actually fits you.</span>
+    </h1>
+    
+    <p class="stagger-3" style="font-size: 1.25rem; color: var(--muted); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+        Stop guessing your future. Our AI-powered system analyzes your interests, skills, and confidence to map out personalized career trajectories built for the next chapter of your life.
+    </p>
+    
+    <div class="stagger-4" style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+        <a href="{{ url_for('register') }}" class="primary-button glow-btn" style="text-decoration: none; display: inline-flex; align-items: center; font-size: 1.1rem; padding: 1.2rem 2.5rem; border-radius: 50px; background: var(--teal); color: #000;">
+            Get Started Now <span style="margin-left: 0.5rem; transition: transform 0.3s;" class="arrow">→</span>
+        </a>
+        <a href="{{ url_for('login') }}" class="secondary-btn" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; font-size: 1.1rem; padding: 1.2rem 2.5rem; background: rgba(255,255,255,0.03); color: var(--ink); border: 1px solid var(--line); border-radius: 50px; font-weight: 500; transition: all 0.3s; backdrop-filter: blur(5px);">
+            Log In
+        </a>
+    </div>
+</section>
+
+<section class="features" style="position: relative; z-index: 10; padding: 2rem 1rem 6rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; max-width: 1100px; margin: 0 auto;">
+    <div class="feature-card stagger-5">
+        <div class="feature-icon floating">🎯</div>
+        <h3 style="margin-bottom: 0.75rem; font-size: 1.35rem; color: var(--ink);">Data-Driven Matching</h3>
+        <p style="color: var(--muted); font-size: 1rem; line-height: 1.6;">We look at market demand, salary data, and your unique traits to find the highest probability of success.</p>
+    </div>
+    
+    <div class="feature-card stagger-6">
+        <div class="feature-icon floating" style="animation-delay: 0.5s;">🗺️</div>
+        <h3 style="margin-bottom: 0.75rem; font-size: 1.35rem; color: var(--ink);">Actionable Roadmaps</h3>
+        <p style="color: var(--muted); font-size: 1rem; line-height: 1.6;">Don't just get a title. Get a step-by-step roadmap on exactly how to break into your recommended fields.</p>
+    </div>
+    
+    <div class="feature-card stagger-7">
+        <div class="feature-icon floating" style="animation-delay: 1s;">⚡</div>
+        <h3 style="margin-bottom: 0.75rem; font-size: 1.35rem; color: var(--ink);">Instant Results</h3>
+        <p style="color: var(--muted); font-size: 1rem; line-height: 1.6;">Skip the 50-page questionnaires. Our streamlined assessment gets you answers in less than 2 minutes.</p>
+    </div>
+</section>
+
+<style>
+    /* Background Orbs */
+    .animated-bg {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100vh;
+        overflow: hidden;
+        z-index: 1;
+        pointer-events: none;
+    }
+    .glow-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.3;
+        animation: float 15s infinite ease-in-out alternate;
+    }
+    .orb-1 {
+        width: 400px; height: 400px;
+        background: var(--teal);
+        top: -100px; left: -100px;
+    }
+    .orb-2 {
+        width: 500px; height: 500px;
+        background: var(--blue);
+        bottom: -200px; right: -100px;
+        animation-delay: -5s;
+        opacity: 0.15;
+    }
+
+    @keyframes float {
+        0% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(100px, 150px) scale(1.1); }
+        100% { transform: translate(-50px, 80px) scale(0.9); }
+    }
+
+    /* Gradient Text Animation */
+    .gradient-text {
+        background: linear-gradient(to right, var(--teal), var(--coral), var(--yellow), var(--teal));
+        background-size: 300% 100%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shimmer 6s infinite linear;
+    }
+
+    @keyframes shimmer {
+        0% { background-position: 0% 50%; }
+        100% { background-position: -300% 50%; }
+    }
+
+    /* Staggered Load Animations */
+    [class^="stagger-"] {
+        opacity: 0;
+        animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
+    .stagger-5 { animation-delay: 0.6s; }
+    .stagger-6 { animation-delay: 0.7s; }
+    .stagger-7 { animation-delay: 0.8s; }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Pulse animation */
+    @keyframes pulse {
+        0% { opacity: 0.6; transform: scale(0.9); }
+        50% { opacity: 1; transform: scale(1.1); }
+        100% { opacity: 0.6; transform: scale(0.9); }
+    }
+
+    /* Floating Icons */
+    .floating {
+        animation: floatIcon 4s ease-in-out infinite;
+    }
+    @keyframes floatIcon {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-12px); }
+        100% { transform: translateY(0); }
+    }
+
+    /* Feature Cards */
+    .feature-card {
+        padding: 2.5rem;
+        background: rgba(17, 24, 24, 0.6);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 16px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .feature-icon {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+        background: rgba(255,255,255,0.03);
+        padding: 1.2rem;
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.08);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .feature-card:hover {
+        transform: translateY(-12px) scale(1.03);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        border-color: rgba(46,184,177,0.4);
+        background: rgba(17, 24, 24, 0.85);
+    }
+
+    /* Button Glow & Hover */
+    .glow-btn {
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 0 25px rgba(46,184,177,0.4);
+        transition: all 0.3s;
+    }
+    .glow-btn::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 50%; height: 100%;
+        background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+        transform: skewX(-20deg);
+        animation: shine 3.5s infinite;
+    }
+    @keyframes shine {
+        0% { left: -100%; }
+        20% { left: 200%; }
+        100% { left: 200%; }
+    }
+    .glow-btn:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 35px rgba(46,184,177,0.6);
+    }
+    .glow-btn:hover .arrow {
+        transform: translateX(6px);
+    }
+    .secondary-btn:hover {
+        background: rgba(255,255,255,0.08) !important;
+        transform: translateY(-4px);
+        border-color: var(--teal);
+        color: var(--teal) !important;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+</style>
+{% endblock %}
